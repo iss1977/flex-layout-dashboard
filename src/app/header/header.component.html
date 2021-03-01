@@ -1,0 +1,41 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row fxLayoutAlign="space-between center">
+    <div fxLayout="row">
+      <button mat-button>
+        <mat-icon>home</mat-icon>
+        <span class="logo">Dashboard</span>
+      </button>
+
+      <div *ngIf="!deviceXs">
+        <button mat-button>
+          <span>Home</span>
+        </button>
+        <button mat-button>
+          <span>Contact</span>
+        </button>
+        <button mat-button>
+          <span>About us</span>
+        </button>
+      </div>
+
+    </div>
+
+    <button mat-icon-button>
+      <mat-icon *ngIf="deviceXs">more_vert</mat-icon>
+      <span *ngIf="!deviceXs">Menu</span>
+    </button>
+
+  </mat-toolbar-row>
+
+  <mat-toolbar-row *ngIf="deviceXs" fxLayoutAlign="space-around">
+    <button mat-button>
+      <span>Home</span>
+    </button>
+    <button mat-button>
+      <span>Contact</span>
+    </button>
+    <button mat-button>
+      <span>About us</span>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>

@@ -12,7 +12,10 @@ import {filter, map, take} from 'rxjs/operators';
 export class AppComponent implements OnInit, OnDestroy {
   title = 'flex-layout-dashboard';
   //mediaSub: Subscription; // was in tutorial, but that usage is depreceated.
-  mediaSub: Observable<MediaChange[]>;
+  mediaSub: Observable<MediaChange[]>; // this observable tells us when a media change happens
+
+  // Create a variable to store true if xs size
+  deviceXs: boolean;
 
   constructor(public mediaObserver: MediaObserver){}
 
@@ -22,7 +25,10 @@ export class AppComponent implements OnInit, OnDestroy {
     this.mediaSub.pipe().subscribe(
       (mChange: MediaChange[])=>{
         mChange.forEach((element, index) => {
-          if(index ===0) console.log("Mediachange detected: mqAlias is "+element.mqAlias)
+          if(index ===0) {
+            console.log("Mediachange detected: mqAlias is "+element.mqAlias);
+            this.deviceXs= element.mqAlias==='xs'? true : false;
+          }
         });
       });
 
